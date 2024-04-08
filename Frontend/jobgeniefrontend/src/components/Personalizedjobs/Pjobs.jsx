@@ -15,14 +15,13 @@ export default function Pjobs() {
 
   useEffect(() => {
     if (data && data.user && data.user.user && data.user.user.targetedjobs) {
-      setTjobs(extractedJobs);
+      setTjobs(data.user.user.targetedjobs);
     }
   }, [data]);
   if (tjobs.length <= 0) {
     return <div>loading...</div>;
   }
-
-  console.log(tjobs);
+  const actualArray = JSON.parse(tjobs[0]);
 
   const token = localStorage.getItem("token");
   return (
@@ -36,7 +35,9 @@ export default function Pjobs() {
                 As per your resume, your personalized jobs
               </h1>
               <div className="card-container">
-                <Cards />
+                {actualArray.map((job, index) => {
+                  return <Cards key={index} job={job} />;
+                })}
               </div>
             </div>
           </div>
