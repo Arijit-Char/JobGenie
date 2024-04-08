@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -66,7 +66,7 @@ export default function Hero() {
               tabIndex={-1}
               startIcon={<CloudUploadIcon />}
             >
-              {btnref ? "File Selected"  : "Upload file"}
+              {btnref ? "File Selected" : "Upload file"}
               <VisuallyHiddenInput type="file" onChange={handleFileChange} />
             </Button>
             <Button

@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
 import "./Pjobs.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../actions/user";
 export default function Pjobs() {
-  const token = localStorage.getItem("token");
+  const [tjobs, setTjobs] = useState([]);
   const dispatch = useDispatch();
-  dispatch(getData());
-  const data = useSelector((state) => state.getData);
-  console.log(data);
 
+  useEffect(() => {
+    dispatch(getData());
+  }, [dispatch]);
+
+  const data = useSelector((state) => state.getuser);
+
+  useEffect(() => {
+    if (data && data.user && data.user.user && data.user.user.targetedjobs) {
+      setTjobs(extractedJobs);
+    }
+  }, [data]);
+  if (tjobs.length <= 0) {
+    return <div>loading...</div>;
+  }
+
+  console.log(tjobs);
+
+  const token = localStorage.getItem("token");
   return (
     <>
       {token ? (

@@ -18,7 +18,6 @@ import { logout } from "../../actions/user";
 export default function Header() {
   const dispatch = useDispatch();
   const { message, error } = useSelector((state) => state.logout);
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 

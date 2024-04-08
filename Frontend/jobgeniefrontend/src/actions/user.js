@@ -93,11 +93,17 @@ export const getData = () => async (dispatch) => {
             type: "Get_User_Request",
         });
 
-        const { data } = await axios.get("http://localhost:5000/api/users/userdetails", { withCredentials: true });
+
+        const { data: userdata } = await axios.get(
+            "http://localhost:5000/api/users/userdetails",
+            {
+                withCredentials: true,
+            }
+        );
 
         dispatch({
             type: "Get_User_Success",
-            payload: data.user,
+            payload: userdata,
         });
     } catch (error) {
         dispatch({
