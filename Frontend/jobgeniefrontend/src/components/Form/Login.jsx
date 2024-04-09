@@ -34,7 +34,13 @@ export default function Login() {
 
   React.useEffect(() => {
     if (message) {
-      localStorage.setItem("token", message);
+      const expirationTime = new Date().getTime() + 24 * 60 * 60 * 1000;
+      const item = {
+        token: message,
+        expires: expirationTime,
+      };
+
+      localStorage.setItem("token", JSON.stringify(item));
       toast.success(message, { position: "bottom-center" });
       navigate("/");
     } else if (error) {

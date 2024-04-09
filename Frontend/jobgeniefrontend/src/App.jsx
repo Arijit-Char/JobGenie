@@ -7,8 +7,20 @@ import Login from "./components/Form/Login";
 import toast, { Toaster } from "react-hot-toast";
 import Pjobs from "./components/Personalizedjobs/Pjobs";
 import PersonalizedJobListings from "./components/Personalizedjobs/PersonalizedJobListings/PersonalizedJobListings";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const storedItem = localStorage.getItem("token");
+
+    if (storedItem) {
+      const parsedItem = JSON.parse(storedItem);
+      const expirationTime = parsedItem.expires;
+      if (expirationTime && expirationTime < new Date().getTime()) {
+        localStorage.removeItem("token");
+      }
+    }
+  }, []);
   return (
     <Router>
       <Header />
@@ -17,7 +29,10 @@ function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/pjobs" element={<Pjobs />} />
-        <Route path="/PersonalizedJobListings" element={<PersonalizedJobListings />} />
+        <Route
+          path="/PersonalizedJobListings"
+          element={<PersonalizedJobListings />}
+        />
       </Routes>
       <Toaster />
     </Router>
