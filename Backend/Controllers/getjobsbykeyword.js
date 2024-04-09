@@ -5,11 +5,11 @@ export const getjobs = async (req, res) => {
         const { job } = req.body;
         const options = {
             method: 'GET',
-            url: 'https://rapid-linkedin-jobs-api.p.rapidapi.com/search-jobs',
+            url: 'https://jsearch.p.rapidapi.com/search',
             params: {
-                keywords: job,
-                datePosted: 'anyTime',
-                sort: 'mostRelevant'
+                query: job,
+                page: '1',
+                num_pages: '1'
             },
             headers: {
                 'X-RapidAPI-Key': process.env.RapidAPIKey,
