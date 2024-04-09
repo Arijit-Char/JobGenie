@@ -110,3 +110,18 @@ export const GetJobListing = createReducer(initialState, (builder) => {
             state.error = action.payload;
         });
 });
+export const GetJobListingByKeyword = createReducer(initialState, (builder) => {
+    builder
+        .addCase('Get_JLBK_Request', (state) => {
+            state.loading = true;
+        })
+        .addCase('Get_JLBK_Success', (state, action) => {
+
+            state.loading = false;
+            state.joblistingbykey = action.payload;
+        })
+        .addCase('Get_JLBK_Failure', (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
+});

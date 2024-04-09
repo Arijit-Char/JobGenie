@@ -173,3 +173,31 @@ export const GetJobListing = (job) => async (dispatch) => {
         });
     }
 };
+
+export const GetJobListingByKeyword = (job) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "Get_JLBK_Request",
+        });
+
+        const { data:getdata } = await axios.post(
+            "http://localhost:5000/api/getjobsbykey",
+            {
+                "job": job,
+            },
+            {
+                withCredentials: true,
+            }
+        );
+
+        dispatch({
+            type: "Get_JLBK_Success",
+            payload: getdata,
+        });
+    } catch (error) {
+        dispatch({
+            type: "Get_Login_Failure",
+            payload: error.response.data.message,
+        });
+    }
+};

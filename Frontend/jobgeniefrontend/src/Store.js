@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { GetJobListing, Getuser, Login, Logout, Register, ResumeUpload } from "./reducers/user";
+import { GetJobListing, GetJobListingByKeyword, Getuser, Login, Logout, Register, ResumeUpload } from "./reducers/user";
 
 const store = configureStore({
     reducer: {
@@ -8,7 +8,8 @@ const store = configureStore({
         logout: Logout,
         getuser: Getuser,
         resumeupload: ResumeUpload,
-        joblisting:GetJobListing
+        joblisting: GetJobListing,
+        joblistingbykey: GetJobListingByKeyword,
     },
 });
 
