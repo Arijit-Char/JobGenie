@@ -155,3 +155,21 @@ export const resumeUpload = (file) => async (dispatch) => {
         });
     }
 };
+
+export const GetJobListing = (job) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "Get_JL_Request",
+        })
+
+        dispatch({
+            type: "Get_JL_Success",
+            payload: job,
+        });
+    } catch (error) {
+        dispatch({
+            type: "Get_JL_Failure",
+            payload: error.response.data.message,
+        });
+    }
+};

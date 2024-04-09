@@ -2,6 +2,10 @@ import { createReducer } from "@reduxjs/toolkit"
 const initialState = {
     loading: true,
 }
+const initialJobListing = {
+    loading: true,
+    joblisting: "",
+}
 
 
 export const Register = createReducer(initialState, (builder) => {
@@ -87,6 +91,21 @@ export const Getuser = createReducer(initialState, (builder) => {
             state.user = action.payload;
         })
         .addCase('Get_User_Failure', (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
+});
+export const GetJobListing = createReducer(initialState, (builder) => {
+    builder
+        .addCase('Get_JL_Request', (state) => {
+            state.loading = true;
+        })
+        .addCase('Get_JL_Success', (state, action) => {
+
+            state.loading = false;
+            state.joblisting = action.payload;
+        })
+        .addCase('Get_JL_Failure', (state, action) => {
             state.loading = false;
             state.error = action.payload;
         });
