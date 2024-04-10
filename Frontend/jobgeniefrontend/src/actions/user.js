@@ -180,7 +180,7 @@ export const GetJobListingByKeyword = (job) => async (dispatch) => {
             type: "Get_JLBK_Request",
         });
 
-        const { data:getdata } = await axios.post(
+        const { data: getdata } = await axios.post(
             "http://localhost:5000/api/getjobsbykey",
             {
                 "job": job,
@@ -197,6 +197,24 @@ export const GetJobListingByKeyword = (job) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: "Get_Login_Failure",
+            payload: error.response.data.message,
+        });
+    }
+};
+
+export const GetJobDetails = (job) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "Get_JobDetails_Request",
+        })
+
+        dispatch({
+            type: "Get_JobDetails_Success",
+            payload: job,
+        });
+    } catch (error) {
+        dispatch({
+            type: "Get_JobDetails_Failure",
             payload: error.response.data.message,
         });
     }

@@ -8,6 +8,7 @@ const initialJobListing = {
 }
 
 
+
 export const Register = createReducer(initialState, (builder) => {
     builder
         .addCase('Get_Register_Request', (state) => {
@@ -121,6 +122,21 @@ export const GetJobListingByKeyword = createReducer(initialState, (builder) => {
             state.joblistingbykey = action.payload;
         })
         .addCase('Get_JLBK_Failure', (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
+});
+export const JobDetails = createReducer(initialState, (builder) => {
+    builder
+        .addCase('Get_JobDetails_Request', (state) => {
+            state.loading = true;
+        })
+        .addCase('Get_JobDetails_Success', (state, action) => {
+
+            state.loading = false;
+            state.jobdetails = action.payload;
+        })
+        .addCase('Get_JobDetails_Failure', (state, action) => {
             state.loading = false;
             state.error = action.payload;
         });

@@ -5,10 +5,19 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import logo from "../../../Data/logo.png";
-import Jobdetails from "../../JobDetails/Jobdetails";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { GetJobDetails } from "../../../actions/user";
 export default function PersonalizedJobListingscards({ job }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
-    <div onClick={() => <Jobdetails />}>
+    <div
+      onClick={() => {
+        dispatch(GetJobDetails(job));
+        navigate("/jobdetails");
+      }}
+    >
       <Card sx={{ maxWidth: 455 }}>
         <CardActionArea>
           <CardMedia

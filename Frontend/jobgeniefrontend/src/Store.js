@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { GetJobListing, GetJobListingByKeyword, Getuser, Login, Logout, Register, ResumeUpload } from "./reducers/user";
+import { GetJobListing, GetJobListingByKeyword, Getuser, JobDetails, Login, Logout, Register, ResumeUpload } from "./reducers/user";
 
 const store = configureStore({
     reducer: {
@@ -10,6 +10,7 @@ const store = configureStore({
         resumeupload: ResumeUpload,
         joblisting: GetJobListing,
         joblistingbykey: GetJobListingByKeyword,
+        jobdetails: JobDetails,
     },
 });
 
