@@ -4,7 +4,7 @@ import { User } from "../Models/user.js";
 
 dotenv.config();
 
-export const geminikeyinfo = async (req, res, next) => {
+export const getresumeanalysis = async (req, res, next) => {
     try {
         const user = await User.findById(req.user._id);
         if (user.resume.length <= 0) {
@@ -13,16 +13,18 @@ export const geminikeyinfo = async (req, res, next) => {
                 error: "Resume data not found"
             });
         }
+
+        const { description, qualification } = req.body;
+
         const genAI = new GoogleGenerativeAI(process.env.API_KEY);
         const responseData = user.resume
 
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-        const prompt = `This is my resume data in text format. Resume Data: ${responseData}. Check the whole resume including projects, experience, skills,
-         tech stacks, etc., to find out what kind of job types this resume is targeting. Send me an array of strings in JavaScript where the array contains only the job types,
-          sub job types,related job types ,every job types the resume is targeting in double inverted comma. If the resume is targeting only one job type, send an array with that one job type.
-           If it's targeting two job types, send an array with those two job types, and so on. If the resume is not targeting any jobs, just send an empty array.
-            If the resume is not a resume, just send an array containing only the text: 'This is not a Resume.`;
+        const prompt = `This is my resume data in text format. Resume Data: ${responseData}, This is the job I am applying for. Job Description: ${description} and This is the job qualification I am applying for. Job Qualification: ${qualification}.Check my resume, job description and job qualification and find out all the points 
+        why my resume is not suitable for this resume. In which section , which skills I am lagging,Which Keywards I need to use in my resume for this job, how can I make my resume perfect for this job.Send me an object in JavaScript where 
+        the objects contains this all points in detailed formet. Object Contains sections including Problems with this resume for this job, Reasons why it will not be shortlisted at the time of resume shortlisting rount,
+         Skills I am lagging, Keywards I need to use in my resume for this job, how can I make my resume perfect for this job. Just send me the object no need to send anythin else.`;
 
 
         try {
@@ -37,7 +39,7 @@ export const geminikeyinfo = async (req, res, next) => {
                 success: true,
                 data: text,
             });
-            req.geminikeyinfo = text;
+            req.resumeanalysis = text;
         } catch (error) {
             res.status(500).json({
                 success: false,

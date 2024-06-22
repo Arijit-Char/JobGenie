@@ -7,7 +7,7 @@ export const register = (name, email, password) => async (dispatch) => {
         });
 
         const { data } = await axios.post(
-            "http://localhost:5000/api/users/register",
+            "http://localhost:5001/api/users/register",
             {
                 name,
                 email,
@@ -41,7 +41,7 @@ export const login = (email, password) => async (dispatch) => {
         });
 
         const { data } = await axios.post(
-            "http://localhost:5000/api/users/login",
+            "http://localhost:5001/api/users/login",
             {
                 email,
                 password,
@@ -72,7 +72,7 @@ export const logout = () => async (dispatch) => {
             type: "Get_Logout_Request",
         });
 
-        const { data } = await axios.get("http://localhost:5000/api/users/logout");
+        const { data } = await axios.get("http://localhost:5001/api/users/logout");
 
         dispatch({
             type: "Get_Logout_Success",
@@ -95,7 +95,7 @@ export const getData = () => async (dispatch) => {
 
 
         const { data: userdata } = await axios.get(
-            "http://localhost:5000/api/users/userdetails",
+            "http://localhost:5001/api/users/userdetails",
             {
                 withCredentials: true,
             }
@@ -122,7 +122,7 @@ export const resumeUpload = (file) => async (dispatch) => {
         formData.append('file', file);
 
         const { data: resumeData } = await axios.post(
-            "http://localhost:5000/api/resumedata",
+            "http://localhost:5001/api/resumedata",
             formData,
             {
                 headers: {
@@ -138,7 +138,7 @@ export const resumeUpload = (file) => async (dispatch) => {
         });
 
         const { data: geminiKeyInfo } = await axios.get(
-            "http://localhost:5000/api/geminikeyinfo",
+            "http://localhost:5001/api/geminikeyinfo",
             {
                 withCredentials: true,
             }
@@ -181,7 +181,7 @@ export const GetJobListingByKeyword = (job) => async (dispatch) => {
         });
 
         const { data: getdata } = await axios.post(
-            "http://localhost:5000/api/getjobsbykey",
+            "http://localhost:5001/api/getjobsbykey",
             {
                 "job": job,
             },

@@ -11,9 +11,19 @@ const Jobdetails = () => {
     setActiveScreen(screen);
   };
 
+  var jobq = "";
+  var jobd = "";
+
   if (!jobdetails) {
     return <div>Loading...</div>;
   }
+  jobdetails.job_highlights.Qualifications.map(
+    (qualification) => (jobq = jobq + qualification)
+  );
+
+  jobdetails.job_description.split(/\n/).forEach((line) => {
+    jobd += `${line.trim()}\n`;
+  });
 
   return (
     <div className="component-container">
@@ -127,6 +137,8 @@ const Jobdetails = () => {
             className="screen"
           >
             Analysis Screen Content
+            {/* {console.log(jobq)} */}
+            {/* {console.log(jobd)} */}
           </motion.div>
         )}
 
