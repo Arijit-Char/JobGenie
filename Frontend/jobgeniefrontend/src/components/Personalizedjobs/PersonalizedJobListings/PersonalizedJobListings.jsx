@@ -1190,8 +1190,8 @@ export default function PersonalizedJobListings() {
   //   );
 
   //   useEffect(() => {
-  //     if (jobarray && jobarray.error && jobarray.error.data) {
-  //       setJobsbykey(jobarray.error.data);
+  //     if (jobarray && jobarray.data && jobarray.data.data) {
+  //       setJobsbykey(jobarray.data.data);
   //     }
   //   }, [jobarray]);
 
@@ -1206,7 +1206,7 @@ export default function PersonalizedJobListings() {
     <div className="perjobliscard">
       {jobsbykey.map((job) => {
         return (
-          <div className="card">
+          <div className="card" key={jobsbykey.job_id}>
             <PersonalizedJobListingscards job={job} />
           </div>
         );

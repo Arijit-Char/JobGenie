@@ -20,7 +20,7 @@ export const getjobs = async (req, res) => {
             const response = await axios.request(options);
             res.status(200).json({
                 success: true,
-                error: response.data
+                data: response.data
             });
         } catch (error) {
             console.error(error);
