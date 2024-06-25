@@ -22,9 +22,13 @@ const Jobdetails = () => {
   );
 
   jobdetails.job_description.split(/\n/).forEach((line) => {
-    jobd += `${line.trim()}\n`;
+    if (line.trim().length > 0) {
+      jobd += line.trim() + ". ";
+    }
   });
-
+if(jobq.length<1 || jobd.length<1){
+  return <div>Loading...</div>;
+}
   return (
     <div className="component-container">
       <div className="button-container">
@@ -137,8 +141,8 @@ const Jobdetails = () => {
             className="screen"
           >
             Analysis Screen Content
-            {/* {console.log(jobq)} */}
-            {/* {console.log(jobd)} */}
+            {console.log(jobq)}
+            {console.log(jobd)}
           </motion.div>
         )}
 
