@@ -55,7 +55,4 @@ JobGenie offers personalized job recommendations and insights to streamline the 
 - MongoDB
 - Gemini AI API
 
-## Declaration of Previous Work
-This project is a continuation of the previous version available at (https://github.com/Arijit-Char/JobGenie). For this hackathon period, the resume analysis section has been implemented as per the job description and user's resume, including the backend.
-
 **Please Note:** This project is not 100% complete due to time constraints, but it provides a solid foundation for further development and enhancement.
