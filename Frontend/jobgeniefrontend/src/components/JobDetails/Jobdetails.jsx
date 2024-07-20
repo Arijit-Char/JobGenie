@@ -3,7 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./Jobdetails.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { ResumeAnalysis } from "../../actions/user";
-
+function removeJsonDelimiters(input) {
+  return input.replace(/^```json\s+|\s+```$/g, "");
+}
 const Jobdetails = () => {
   const dispatch = useDispatch();
   const jobdetails = useSelector((state) => state.jobdetails.jobdetails);
@@ -162,7 +164,7 @@ const Jobdetails = () => {
             className="screen"
           >
             Analysis Screen Content
-            {console.log(analysis)}
+            {console.log(removeJsonDelimiters(analysis.data))}
           </motion.div>
         )}
 
