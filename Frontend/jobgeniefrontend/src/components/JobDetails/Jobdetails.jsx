@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Jobdetails.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,7 @@ function removeJsonDelimiters(input) {
 const Jobdetails = () => {
   const dispatch = useDispatch();
   const jobdetails = useSelector((state) => state.jobdetails.jobdetails);
-  const analysis = useSelector((state) => state.resumeanalysis.analysis);
+  let analysis = useSelector((state) => state.resumeanalysis.analysis);
   const [activeScreen, setActiveScreen] = useState("job");
   const [jobq, setJobq] = useState("");
   const [jobd, setJobd] = useState("");
@@ -51,7 +51,7 @@ const Jobdetails = () => {
   if (jobq.length < 1 || jobd.length < 1) {
     return <div>Loading...</div>;
   }
-
+  analysis = JSON.parse(removeJsonDelimiters(analysis.data));
   return (
     <div className="component-container">
       <div className="button-container">
@@ -157,15 +157,35 @@ const Jobdetails = () => {
 
         {activeScreen === "analysis" && (
           <motion.div
-            key="analysis"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            className="screen"
-          >
-            Analysis Screen Content
-            {console.log(removeJsonDelimiters(analysis.data))}
-          </motion.div>
+          key="analysis"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          className="screen"
+        >
+          <div className="analysis-container">
+            <h2 className="analysis-title">Resume Analysis</h2>
+            <p className="analysis-probability">
+              Match Probability: {analysis.Probability}%
+            </p>
+            <div className="analysis-section">
+              <h3 className="analysis-section-title">Problems:</h3>
+              <ul className="analysis-list">
+                {analysis.Problems.map((problem, index) => (
+                  <li key={index}>{problem}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="analysis-section">
+              <h3 className="analysis-section-title">Recommendations:</h3>
+              <ul className="analysis-list">
+                {analysis.Suggestions.map((recommendation, index) => (
+                  <li key={index}>{recommendation}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
         )}
 
         {activeScreen === "interview" && (

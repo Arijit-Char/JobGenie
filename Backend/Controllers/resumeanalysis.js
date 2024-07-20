@@ -22,8 +22,8 @@ export const getresumeanalysis = async (req, res, next) => {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     const prompt = `This is my resume data in text format. Resume Data: ${responseData}, This is the job I am applying for. Job Description: ${description} and This is the job qualification I am applying for. Job Qualification: ${qualification}.Analyse
-         my resume, job description and job qualification and find out all the points:  give the percent of probablity of my resume to get selected for that job role,
-       Problems with my resume, and how can I make my resume perfect for this job. Just send me a JSON object no need to send anythin else.`;
+         my resume, job description and job qualification and find out all the points:  Probability: give the percent of probablity of my resume to get selected for that job role (don't include % sign at end),
+       Problems: Problems with my resume, and Suggestions: how can I make my resume perfect for this job. Send only this 3 things first is a number and rest are array of strings.Just send me a JSON object no need to send anythin else.`;
 
     try {
       const result = await model.generateContent(prompt);
