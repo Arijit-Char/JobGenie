@@ -195,7 +195,7 @@ export const GetJobListingByKeyword = (job) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: "Get_Login_Failure",
+      type: "Get_JLBK_Failure",
       payload: error.response.data.message,
     });
   }
@@ -226,7 +226,7 @@ export const ResumeAnalysis =
         type: "Get_Resume_Analysis_Request",
       });
 
-      const { data: getdata } = await axios.post(
+      const { data: getanalysis } = await axios.post(
         "http://localhost:5001/api/resumeanalysis",
         {
           description: description,
@@ -239,7 +239,7 @@ export const ResumeAnalysis =
 
       dispatch({
         type: "Get_Resume_Analysis_Success",
-        payload: getdata,
+        payload: getanalysis,
       });
     } catch (error) {
       dispatch({

@@ -44,7 +44,7 @@ const Jobdetails = () => {
     setActiveScreen(screen);
   };
 
-  if (!jobdetails) {
+  if (!jobdetails || !analysis || !analysis.data) {
     return <div>Loading...</div>;
   }
 
