@@ -141,7 +141,7 @@ if(jobq.length<1 || jobd.length<1){
             className="screen"
           >
             Analysis Screen Content
-            {console.log(jobq)}
+            {/* {console.log(jobq)} */}
             {console.log(jobd)}
           </motion.div>
         )}
