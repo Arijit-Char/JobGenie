@@ -1177,7 +1177,7 @@ const obj = [
 export default function PersonalizedJobListings() {
   const dispatch = useDispatch();
   const [jobsbykey, setJobsbykey] = useState([]);
-  //   const job = useSelector((state) => state.joblisting.joblisting);
+    // const job = useSelector((state) => state.joblisting.joblisting);
 
   //   useEffect(() => {
   //     if (jobsbykey.length === 0) {

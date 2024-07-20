@@ -2,10 +2,10 @@ import { createReducer } from "@reduxjs/toolkit"
 const initialState = {
     loading: true,
 }
-const initialJobListing = {
-    loading: true,
-    joblisting: "",
-}
+// const initialJobListing = {
+//     loading: true,
+//     joblisting: "",
+// }
 
 
 
@@ -137,6 +137,22 @@ export const JobDetails = createReducer(initialState, (builder) => {
             state.jobdetails = action.payload;
         })
         .addCase('Get_JobDetails_Failure', (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
+});
+
+export const ResumeAnalysis = createReducer(initialState, (builder) => {
+    builder
+        .addCase('Get_Resume_Analysis_Request', (state) => {
+            state.loading = true;
+        })
+        .addCase('Get_Resume_Analysis_Success', (state, action) => {
+
+            state.loading = false;
+            state.analysis = action.payload;
+        })
+        .addCase('Get_Resume_Analysis_Failure', (state, action) => {
             state.loading = false;
             state.error = action.payload;
         });

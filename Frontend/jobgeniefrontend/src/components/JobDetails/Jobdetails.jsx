@@ -1,34 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Jobdetails.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { ResumeAnalysis } from "../../actions/user";
 
 const Jobdetails = () => {
+  const dispatch = useDispatch();
   const jobdetails = useSelector((state) => state.jobdetails.jobdetails);
+  const analysis = useSelector((state) => state.resumeanalysis.analysis);
   const [activeScreen, setActiveScreen] = useState("job");
+  const [jobq, setJobq] = useState("");
+  const [jobd, setJobd] = useState("");
+
+  useEffect(() => {
+    if (jobdetails) {
+      let qualifications = "";
+      let jobDescription = "";
+
+      jobdetails.job_highlights.Qualifications.forEach(
+        (qualification) => (qualifications += qualification + " ")
+      );
+
+      jobdetails.job_description.split(/\n/).forEach((line) => {
+        if (line.trim().length > 0) {
+          jobDescription += line.trim() + ". ";
+        }
+      });
+
+      setJobq(qualifications.trim());
+      setJobd(jobDescription.trim());
+    }
+  }, [jobdetails]);
+
+  useEffect(() => {
+    if (jobd && jobq) {
+      dispatch(ResumeAnalysis(jobd, jobq));
+    }
+  }, [jobd, jobq, dispatch]);
 
   const handleButtonClick = (screen) => {
     setActiveScreen(screen);
   };
 
-  var jobq = "";
-  var jobd = "";
-
   if (!jobdetails) {
     return <div>Loading...</div>;
   }
-  jobdetails.job_highlights.Qualifications.map(
-    (qualification) => (jobq = jobq + qualification)
-  );
 
-  jobdetails.job_description.split(/\n/).forEach((line) => {
-    if (line.trim().length > 0) {
-      jobd += line.trim() + ". ";
-    }
-  });
-if(jobq.length<1 || jobd.length<1){
-  return <div>Loading...</div>;
-}
+  if (jobq.length < 1 || jobd.length < 1) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="component-container">
       <div className="button-container">
@@ -141,8 +162,7 @@ if(jobq.length<1 || jobd.length<1){
             className="screen"
           >
             Analysis Screen Content
-            {/* {console.log(jobq)} */}
-            {console.log(jobd)}
+            {console.log(analysis)}
           </motion.div>
         )}
 
