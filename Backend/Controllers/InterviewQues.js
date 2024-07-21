@@ -37,7 +37,6 @@ export const interviewques = async (req, res, next) => {
         success: true,
         data: text,
       });
-      req.resumeanalysis = text;
     } catch (error) {
       res.status(500).json({
         success: false,

@@ -157,35 +157,35 @@ const Jobdetails = () => {
 
         {activeScreen === "analysis" && (
           <motion.div
-          key="analysis"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -50 }}
-          className="screen"
-        >
-          <div className="analysis-container">
-            <h2 className="analysis-title">Resume Analysis</h2>
-            <p className="analysis-probability">
-              Match Probability: {analysis.Probability}%
-            </p>
-            <div className="analysis-section">
-              <h3 className="analysis-section-title">Problems:</h3>
-              <ul className="analysis-list">
-                {analysis.Problems.map((problem, index) => (
-                  <li key={index}>{problem}</li>
-                ))}
-              </ul>
+            key="analysis"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className="screen"
+          >
+            <div className="analysis-container">
+              <h2 className="analysis-title">Resume Analysis</h2>
+              <p className="analysis-probability">
+                Match Probability: {analysis.Probability}%
+              </p>
+              <div className="analysis-section">
+                <h3 className="analysis-section-title">Problems:</h3>
+                <ul className="analysis-list">
+                  {analysis.Problems.map((problem, index) => (
+                    <li key={index}>{problem}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="analysis-section">
+                <h3 className="analysis-section-title">Recommendations:</h3>
+                <ul className="analysis-list">
+                  {analysis.Suggestions.map((recommendation, index) => (
+                    <li key={index}>{recommendation}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="analysis-section">
-              <h3 className="analysis-section-title">Recommendations:</h3>
-              <ul className="analysis-list">
-                {analysis.Suggestions.map((recommendation, index) => (
-                  <li key={index}>{recommendation}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
         )}
 
         {activeScreen === "interview" && (

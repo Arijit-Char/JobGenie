@@ -144,3 +144,17 @@ export const ResumeAnalysis = createReducer(initialState, (builder) => {
         state.error = action.payload;
       });
   });
+export const InterviewQues = createReducer(initialState, (builder) => {
+    builder
+      .addCase("Get_InterQues_Request", (state) => {
+        state.loading = true;
+      })
+      .addCase("Get_InterQues_Success", (state, action) => {
+        state.loading = false;
+        state.intques = action.payload;
+      })
+      .addCase("Get_InterQues_Failure", (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+  });

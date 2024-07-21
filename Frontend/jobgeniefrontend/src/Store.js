@@ -3,6 +3,7 @@ import {
   GetJobListing,
   GetJobListingByKeyword,
   Getuser,
+  InterviewQues,
   JobDetails,
   Login,
   Logout,
@@ -22,6 +23,7 @@ const store = configureStore({
     joblistingbykey: GetJobListingByKeyword,
     jobdetails: JobDetails,
     resumeanalysis: ResumeAnalysis,
+    interviewques: InterviewQues,
   },
 });
 

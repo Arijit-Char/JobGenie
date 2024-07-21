@@ -248,3 +248,32 @@ export const ResumeAnalysis =
       });
     }
   };
+export const InterviewQues =
+  (description, qualification) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "Get_InterQues_Request",
+      });
+
+      const { data: intvques } = await axios.post(
+        "http://localhost:5001/api/interviewques",
+        {
+          description: description,
+          qualification: qualification,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+
+      dispatch({
+        type: "Get_InterQues_Success",
+        payload: intvques,
+      });
+    } catch (error) {
+      dispatch({
+        type: "Get_InterQues_Failure",
+        payload: error.response.data.message,
+      });
+    }
+  };
