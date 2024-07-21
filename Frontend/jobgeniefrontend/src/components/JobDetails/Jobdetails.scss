@@ -1,3 +1,8 @@
+$primary-color: #4CAF50;
+$secondary-color: #ffffff;
+$font-family: 'Arial, sans-serif';
+$transition-time: 0.3s;
+
 .component-container {
   max-width: 800px;
   margin: 0 auto;
@@ -257,6 +262,46 @@
         margin-left: 20px;
         color: #555;
       }
+    }
+  }
+}
+// src/styles/InterviewQuestions.scss
+
+.interview-questions {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  padding: 50px;
+  background-color: $secondary-color;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: $font-family;
+
+  .question {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  .answer {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .card {
+    width: 40vw;
+    padding: 25px;
+    margin-bottom: 40px;
+    background-color: $secondary-color;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow $transition-time;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
   }
 }

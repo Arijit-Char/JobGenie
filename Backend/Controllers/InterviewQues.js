@@ -23,7 +23,7 @@ export const interviewques = async (req, res, next) => {
 
     const prompt = `This is my resume data in text format. Resume Data: ${responseData}, This is the job I am applying for. 
     Job Description: ${description} and This is the job qualification I am applying for. Job Qualification: ${qualification}.
-    Analyse my resume, job description and job qualification and find out top 20 interview questions with perfect answers that can be 
+    Analyse my resume, job description and job qualification and find out top 20 technical   interview questions with perfect answers that can be 
     asked for this job. Send me an array of array in JavaScript where the array contains only that 20 interview questions and 
     answers respectively. Only send the array of array, first array include 20 arrays and every array include 2 strings, First string is 
     the question and second string is the answer. Only send me this nothing else.`;

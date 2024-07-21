@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Jobdetails.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { ResumeAnalysis } from "../../actions/user";
+import { ResumeAnalysis, InterviewQues } from "../../actions/user";
 function removeJsonDelimiters(input) {
-  return input.replace(/^```json\s+|\s+```$/g, "");
+  return input.replace(
+    /^(```|`|```json|```javascript|```javascr|``` JSON|```js| ```javascript const interviewQuestionsAndAnswers = |```JSON)\s+|\s+(```|;)$/g,
+    ""
+  );
 }
 const Jobdetails = () => {
   const dispatch = useDispatch();
   const jobdetails = useSelector((state) => state.jobdetails.jobdetails);
   let analysis = useSelector((state) => state.resumeanalysis.analysis);
+  let intques = useSelector((state) => state.interviewques.intques);
   const [activeScreen, setActiveScreen] = useState("job");
   const [jobq, setJobq] = useState("");
   const [jobd, setJobd] = useState("");
@@ -39,19 +43,27 @@ const Jobdetails = () => {
       dispatch(ResumeAnalysis(jobd, jobq));
     }
   }, [jobd, jobq, dispatch]);
+  useEffect(() => {
+    if (jobd && jobq) {
+      dispatch(InterviewQues(jobd, jobq));
+    }
+  }, [jobd, jobq, dispatch]);
 
   const handleButtonClick = (screen) => {
     setActiveScreen(screen);
   };
 
-  if (!jobdetails || !analysis || !analysis.data) {
+  if (!jobdetails || !analysis || !analysis.data || !intques || !intques.data) {
     return <div>Loading...</div>;
   }
 
   if (jobq.length < 1 || jobd.length < 1) {
     return <div>Loading...</div>;
   }
+console.log(intques.data);
   analysis = JSON.parse(removeJsonDelimiters(analysis.data));
+  intques = JSON.parse(removeJsonDelimiters(intques.data));
+ 
   return (
     <div className="component-container">
       <div className="button-container">
@@ -115,8 +127,7 @@ const Jobdetails = () => {
                     <p className="detail-value">3 Months</p>
                   </div>
                   <div className="details-column">
-                    {/* <p className="detail-label">Offer Expiration</p>
-                    <p className="detail-value"></p> */}
+                    
                   </div>
                 </div>
               </div>
@@ -189,15 +200,26 @@ const Jobdetails = () => {
         )}
 
         {activeScreen === "interview" && (
-          <motion.div
-            key="interview"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            className="screen"
-          >
-            Interview Questions Screen Content
-          </motion.div>
+           <motion.div
+           initial={{ opacity: 0, y: 50 }}
+           animate={{ opacity: 1, y: 0 }}
+           exit={{ opacity: 0, y: -50 }}
+           className="interview-questions"
+         >
+           {intques.map((item, index) => (
+             <motion.div
+               key={index}
+               className="card"
+               initial={{ opacity: 0, y: 50 }}
+               animate={{ opacity: 1, y: 0 }}
+               exit={{ opacity: 0, y: -50 }}
+               transition={{ duration: 0.3, delay: index * 0.1 }}
+             >
+               <div className="question">{item[0]}</div>
+               <div className="answer">{item[1]}</div>
+             </motion.div>
+           ))}
+         </motion.div>
         )}
       </AnimatePresence>
     </div>
