@@ -5,7 +5,7 @@
   height: 88vh;
   background-color: #f8f8f8;
   gap: 5rem;
-
+  z-index: 1;
   .resume {
     display: flex;
     align-items: center;
@@ -30,11 +30,14 @@
 
   .bodytext {
     margin-left: 20px;
+    color: #ffffff;
+    z-index: 2;
+    position: relative;
 
     h1 {
       font-size: 36px;
       font-weight: bold;
-      color: white;
+      color: #66FCF1;
       margin-bottom: 10px;
     }
 
