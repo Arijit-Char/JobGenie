@@ -45,6 +45,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     dispatch(logout());
+    window.location.reload();
   };
   React.useEffect(() => {
     if (message) {
