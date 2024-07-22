@@ -56,6 +56,12 @@ export default function Hero() {
 
   return (
     <div className="hero">
+      <div className="bodytext">
+        <h1>Upload Your Resume</h1>
+        <h2>
+          Our System Will Analyze Your Resume and Suggest Jobs Accordingly
+        </h2>
+      </div>
       <div className="resume">
         {token ? (
           <div className="grpbtn">
@@ -65,6 +71,7 @@ export default function Hero() {
               variant="contained"
               tabIndex={-1}
               startIcon={<CloudUploadIcon />}
+              className="choosebtn"
             >
               {btnref ? "File Selected" : "Upload file"}
               <VisuallyHiddenInput type="file" onChange={handleFileChange} />
@@ -97,12 +104,6 @@ export default function Hero() {
             </Button>
           </div>
         )}
-      </div>
-      <div className="bodytext">
-        <h1>Upload Your Resume</h1>
-        <h2>
-          Our System Will Analyze Your Resume and Suggest Jobs Accordingly
-        </h2>
       </div>
     </div>
   );
