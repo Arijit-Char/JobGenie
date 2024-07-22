@@ -1,5 +1,8 @@
+@import "../../../../node_modules/@sl-codeblaster/react-3d-animated-card/dist/index.css";
+
 .perjobliscard {
   display: flex;
+  z-index: 1;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -13,4 +16,10 @@
     width: 90%; 
     object-fit: cover; 
   }
-  
+  .card2{
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+  }

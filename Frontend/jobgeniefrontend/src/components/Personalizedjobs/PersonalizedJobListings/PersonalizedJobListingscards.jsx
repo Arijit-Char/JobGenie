@@ -8,6 +8,8 @@ import logo from "../../../Data/logo.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { GetJobDetails } from "../../../actions/user";
+import "./PersonalizedJobListings.scss";
+
 export default function PersonalizedJobListingscards({ job }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
