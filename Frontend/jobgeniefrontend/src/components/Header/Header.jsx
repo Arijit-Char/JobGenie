@@ -124,7 +124,7 @@ export default function Header() {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */}
           </IconButton>
           <Typography
             variant="h6"
@@ -145,7 +145,7 @@ export default function Header() {
           >
             Personalized Jobs
           </IconButton>
-          <IconButton
+          {/* <IconButton
             className="signup-button"
             size="small"
             color="inherit"
@@ -154,7 +154,7 @@ export default function Header() {
             style={{ fontSize: "0.77rem" }}
           >
             All Jobs
-          </IconButton>
+          </IconButton> */}
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>

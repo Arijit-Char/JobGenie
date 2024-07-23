@@ -1,4 +1,3 @@
-import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -10,7 +9,9 @@ import { useDispatch } from "react-redux";
 import { GetJobDetails } from "../../../actions/user";
 import { motion } from "framer-motion";
 import "./PersonalizedJobListings.scss";
-
+import PropTypes from "prop-types";
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 export default function PersonalizedJobListingscards({ job }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ export default function PersonalizedJobListingscards({ job }) {
       }}
     >
       {console.log(job)}
-      <Card className="job-card" sx={{ maxWidth: 345 }}>
+      <Card className="job-card">
         <CardActionArea>
           <CardMedia
             className="employer-logo"
@@ -36,18 +37,56 @@ export default function PersonalizedJobListingscards({ job }) {
             alt="Employer Logo"
           />
           <CardContent>
-            <Typography className="job-title" gutterBottom variant="h5" component="div">
-              {job.employer_name}
-            </Typography>
-            <Typography className="job-location" variant="body2" color="text.secondary">
-              {job.job_city}, {job.job_country} ({job.job_employment_type})
-            </Typography>
-            <Typography className="job-position" variant="body2" color="text.secondary">
-              {job.job_title}
-            </Typography>
+           
+         
+              <Typography
+                className="job-title"
+                gutterBottom
+                variant="h5"
+                component="div"
+              >
+                {job.employer_name}
+              </Typography>
+              <div style={{display:"flex", gap:"3rem",alignItems:"center",justifyContent:"center"}}>
+              <Typography
+                className="job-position"
+                variant="body2"
+                color="text.secondary"
+                style={{display:"flex", gap:"0.5rem"}}
+              >
+                <WorkOutlineIcon style={{fontSize:"medium"}}/> {job.job_title}
+              </Typography>
+            
+            <div className="remotebtn">{job.job_is_remote ? <button> Remote </button> : <button>Onsite</button>}</div>
+            </div>
+            
+           
+              <div style={{display:"flex", gap:"1rem",alignItems:"center",justifyContent:"center",marginTop:"1rem", flexDirection:"column"}}>
+              <Typography
+                className="job-position"
+                variant="body2"
+                color="text.secondary"
+                style={{display:"flex", gap:"0.5rem"}}
+              >
+                <LocationOnIcon style={{fontSize:"medium"}}/> {job.job_city}, {job.job_country}
+              </Typography>
+            
+            <div className="remotebtn">{job.job_employment_type}</div>
+            </div>
           </CardContent>
         </CardActionArea>
       </Card>
     </motion.div>
   );
 }
+PersonalizedJobListingscards.propTypes = {
+  job: PropTypes.shape({
+    employer_logo: PropTypes.string,
+    employer_name: PropTypes.string.isRequired,
+    job_title: PropTypes.string.isRequired,
+    job_is_remote: PropTypes.bool,
+    job_city: PropTypes.string,
+    job_country: PropTypes.string,
+    job_employment_type: PropTypes.string,
+  }).isRequired,
+};
