@@ -14,7 +14,46 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../actions/user";
-const defaultTheme = createTheme();
+
+const defaultTheme = createTheme({
+  palette: {
+    background: {
+      default: "#0B0C10",
+    },
+    primary: {
+      main: "#66FCF1",
+    },
+    secondary: {
+      main: "#45A29E",
+    },
+    text: {
+      primary: "#C5C6C7",
+      secondary: "#C5C6C7",
+    },
+  },
+  typography: {
+    h5: {
+      color: "#C5C6C7",
+    },
+  },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          "& fieldset": {
+            borderColor: "#66FCF1",
+          },
+          "&:hover fieldset": {
+            borderColor: "#45A29E",
+          },
+          "&.Mui-focused fieldset": {
+            borderColor: "#66FCF1",
+          },
+        },
+      },
+    },
+  },
+});
 
 export default function Registration() {
   const dispatch = useDispatch();
@@ -61,13 +100,18 @@ export default function Registration() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            backgroundColor: "#1F2833",
+            padding: 4,
+            borderRadius: 2,
+            boxShadow: 3,
+            zIndex: 10,
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
           <Box
             component="form"
@@ -84,6 +128,10 @@ export default function Registration() {
               name="name"
               autoComplete="name"
               autoFocus
+              InputLabelProps={{ style: { color: "#C5C6C7" } }}
+              InputProps={{
+                style: { color: "#C5C6C7" },
+              }}
             />
             <TextField
               margin="normal"
@@ -93,6 +141,10 @@ export default function Registration() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              InputLabelProps={{ style: { color: "#C5C6C7" } }}
+              InputProps={{
+                style: { color: "#C5C6C7" },
+              }}
             />
             <TextField
               margin="normal"
@@ -103,18 +155,22 @@ export default function Registration() {
               type="password"
               id="password"
               autoComplete="current-password"
+              InputLabelProps={{ style: { color: "#C5C6C7" } }}
+              InputProps={{
+                style: { color: "#C5C6C7" },
+              }}
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, backgroundColor: "#45A29E", color: "#0B0C10" }}
             >
-              Sign In
+              Sign Up
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="/login" variant="body2">
+                <Link href="/login" variant="body2" sx={{ color: "#66FCF1" }}>
                   {"Already have an account? Login"}
                 </Link>
               </Grid>
