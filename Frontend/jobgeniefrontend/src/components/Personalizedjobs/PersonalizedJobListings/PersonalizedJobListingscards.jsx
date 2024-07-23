@@ -26,7 +26,6 @@ export default function PersonalizedJobListingscards({ job }) {
         navigate("/jobdetails");
       }}
     >
-      {console.log(job)}
       <Card className="job-card">
         <CardActionArea>
           <CardMedia

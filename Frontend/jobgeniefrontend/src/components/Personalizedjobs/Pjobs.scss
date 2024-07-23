@@ -8,9 +8,10 @@
 }
 
 .page-heading {
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #c5c6c7;
+  font-size:3rem;
+  margin: 30px;
+  color: #66FCF1;
+  font-weight: 800;
 }
 
 .card-container {
@@ -66,12 +67,12 @@
 
 .card {
   color: var(--clr-neutral-100);
-  // backgroun  d-image: url(https://media.contentapi.ea.com/content/dam/eacom/images/2020/09/ea-featured-image-ea-desktop-beta.jpg.adapt.crop191x100.1200w.jpg);
   background-size: cover;
   padding: 10rem 0 0;
   border-radius: 0.5rem;
   overflow: hidden;
   transition: transform 500ms ease;
+  background-color: #1F2833;
   
 }
 
@@ -94,6 +95,7 @@
   position: relative;
   width: max-content;
   font-weight: 800;
+  color: #66F6F1 !important;
 }
 
 .card:hover .card-title::after,

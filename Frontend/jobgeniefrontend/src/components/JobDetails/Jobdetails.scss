@@ -1,42 +1,60 @@
-$primary-color: #4CAF50;
-$secondary-color: #ffffff;
+// Variables
+$primary-bg: #0B0C10;
+$secondary-bg: #1F2833;
+$primary-color: #66FCF1;
+$text-light: #C5C6C7;
+$accent-color: #45A29E;
 $font-family: 'Arial, sans-serif';
 $transition-time: 0.3s;
 
+// Main container
 .component-container {
   max-width: 800px;
   margin: 0 auto;
+  padding: 20px;
+  background-color: $primary-bg;
+  color: $text-light;
+  font-family: $font-family;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  position: relative;
 }
 
+// Button container
 .button-container {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  z-index: 1;
 
   button {
     margin: 0 10px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: $primary-color;
+    color: $secondary-bg;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: $accent-color;
     }
   }
 }
 
+// Screen container
 .screen {
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid $text-light;
   border-radius: 5px;
   margin-bottom: 20px;
+  background-color: $secondary-bg;
 }
 
+// Job details container
 .job-container {
   .employer-details {
     display: flex;
@@ -53,6 +71,7 @@ $transition-time: 0.3s;
     .job-title {
       font-size: 24px;
       margin: 0;
+      color: $primary-color;
     }
 
     .employer-name {
@@ -75,6 +94,7 @@ $transition-time: 0.3s;
         .detail-label {
           font-weight: bold;
           margin-bottom: 5px;
+          color: $primary-color;
         }
 
         .detail-value {
@@ -85,9 +105,9 @@ $transition-time: 0.3s;
   }
 
   .responsibilities-title,
-  .requirements-title,
-  .skills-title,
-  .about-employer-title {
+  .requirements-title {
+    font-size: 20px;
+    margin-top: 20px;
     margin-bottom: 10px;
   }
 
@@ -101,178 +121,63 @@ $transition-time: 0.3s;
     }
   }
 
-  .skills {
-    margin: 0;
-  }
+  .apply-now-container {
+    text-align: center;
+    margin-top: 20px;
 
-  .about-employer {
-    margin: 0;
-  }
-}
-.apply-now-container {
-  text-align: center;
-  margin-top: 20px;
-
-  .apply-now-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
-}
-.component-container {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-
-  .button-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-
-    button {
-      background-color: #007bff;
-      color: white;
-      border: none;
+    .apply-now-button {
+      display: inline-block;
       padding: 10px 20px;
-      margin: 0 5px;
-      cursor: pointer;
+      background-color: $primary-color;
+      color: $secondary-bg;
+      text-decoration: none;
+      border-radius: 5px;
       transition: background-color 0.3s;
 
       &:hover {
-        background-color: #0056b3;
-      }
-    }
-  }
-
-  .screen {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-
-  .job-container {
-    .employer-details {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-
-      .employer-logo {
-        width: 50px;
-        height: 50px;
-        margin-right: 20px;
-      }
-
-      .job-title {
-        font-size: 24px;
-        margin: 0;
-      }
-
-      .employer-name {
-        font-size: 16px;
-        color: #555;
-      }
-    }
-
-    .details-container {
-      .details-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-
-        .details-column {
-          flex: 1;
-          padding: 0 10px;
-
-          .detail-label {
-            font-weight: bold;
-            margin-bottom: 5px;
-          }
-
-          .detail-value {
-            color: #555;
-          }
-        }
-      }
-    }
-
-    .responsibilities-title,
-    .requirements-title {
-      font-size: 20px;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-
-    .responsibilities-list,
-    .requirements-list {
-      list-style-type: disc;
-      margin-left: 20px;
-      color: #555;
-    }
-
-    .apply-now-container {
-      margin-top: 20px;
-
-      .apply-now-button {
-        display: inline-block;
-        background-color: #28a745;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-
-        &:hover {
-          background-color: #218838;
-        }
-      }
-    }
-  }
-
-  .analysis-container {
-    .analysis-title {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .analysis-probability {
-      font-size: 18px;
-      margin-bottom: 20px;
-      color: #555;
-    }
-
-    .analysis-section {
-      margin-bottom: 20px;
-
-      .analysis-section-title {
-        font-size: 20px;
-        margin-bottom: 10px;
-      }
-
-      .analysis-list {
-        list-style-type: disc;
-        margin-left: 20px;
-        color: #555;
+        background-color: $accent-color;
       }
     }
   }
 }
-// src/styles/InterviewQuestions.scss
 
+// Analysis container
+.analysis-container {
+  .analysis-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .analysis-probability {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: $primary-color;
+  }
+
+  .analysis-section {
+    margin-bottom: 20px;
+
+    .analysis-section-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: $primary-color;
+    }
+
+    .analysis-list {
+      list-style-type: disc;
+      margin-left: 20px;
+      color: $text-light;
+    }
+  }
+}
+
+// Interview Questions container
 .interview-questions {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   padding: 50px;
-  background-color: $secondary-color;
+  background-color: $secondary-bg;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: $font-family;
@@ -286,7 +191,7 @@ $transition-time: 0.3s;
 
   .answer {
     font-size: 1em;
-    color: #333;
+    color: $text-light;
     margin-bottom: 20px;
     line-height: 1.6;
   }
@@ -295,7 +200,7 @@ $transition-time: 0.3s;
     width: 40vw;
     padding: 25px;
     margin-bottom: 40px;
-    background-color: $secondary-color;
+    background-color: $primary-bg;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow $transition-time;
