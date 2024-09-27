@@ -54,15 +54,19 @@
     };
 
     if (!jobdetails || !analysis || !analysis.data || !intques || !intques.data) {
-      return <div>Loading...</div>;
+      return <div style={{zIndex:"2"}}>Loading...</div>;
     }
 
     if (jobq.length < 1 || jobd.length < 1) {
-      return <div>Loading...</div>;
+      return <div style={{zIndex:"2"}}>Loading...</div>;
     }
     analysis = JSON.parse(removeJsonDelimiters(analysis.data));
     intques = JSON.parse(removeJsonDelimiters(intques.data));
   
+    if(!analysis || !intques) {
+      return <div>Loading...</div>;
+    }
+    console.log(analysis);
     return (
       <div className="component-container">
         <div className="button-container">

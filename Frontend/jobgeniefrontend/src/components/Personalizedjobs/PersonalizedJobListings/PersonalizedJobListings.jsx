@@ -1175,25 +1175,25 @@ const obj = [
   },
 ];
 export default function PersonalizedJobListings() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [jobsbykey, setJobsbykey] = useState([]);
     // const job = useSelector((state) => state.joblisting.joblisting);
 
-  //   useEffect(() => {
-  //     if (jobsbykey.length === 0) {
-  //       dispatch(GetJobListingByKeyword(job));
-  //     }
-  //   }, [dispatch, job, jobsbykey]);
+    // useEffect(() => {
+    //   if (jobsbykey.length === 0) {
+    //     dispatch(GetJobListingByKeyword(job));
+    //   }
+    // }, [dispatch, job, jobsbykey]);
 
-  //   const jobarray = useSelector(
-  //     (state) => state.joblistingbykey.joblistingbykey
-  //   );
+    // const jobarray = useSelector(
+    //   (state) => state.joblistingbykey.joblistingbykey
+    // );
 
-  //   useEffect(() => {
-  //     if (jobarray && jobarray.data && jobarray.data.data) {
-  //       setJobsbykey(jobarray.data.data);
-  //     }
-  //   }, [jobarray]);
+    // useEffect(() => {
+    //   if (jobarray && jobarray.data && jobarray.data.data) {
+    //     setJobsbykey(jobarray.data.data);
+    //   }
+    // }, [jobarray]);
 
   useEffect(() => {
     setJobsbykey(obj);
