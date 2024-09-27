@@ -17,7 +17,6 @@ router.post("/resumedata", upload.single('file'), isAuthenticated, resumedata);
 router.get("/geminikeyinfo", isAuthenticated, geminikeyinfo);
 router.post("/getjobsbykey", isAuthenticated, getjobs);
 router.post("/resumeanalysis", isAuthenticated, getresumeanalysis);
-router.post("/resumeanalysis", isAuthenticated, getresumeanalysis);
 router.post("/interviewques", isAuthenticated, interviewques);
 
 

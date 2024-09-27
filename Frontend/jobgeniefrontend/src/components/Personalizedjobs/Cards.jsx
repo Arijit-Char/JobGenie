@@ -7,7 +7,7 @@ import { GetJobListing } from "../../actions/user";
 export default function Cards({ job }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  
   return (
     <div
       className="card"

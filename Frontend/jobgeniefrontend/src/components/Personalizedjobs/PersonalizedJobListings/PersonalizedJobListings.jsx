@@ -1207,7 +1207,7 @@ export default function PersonalizedJobListings() {
       {jobsbykey.map((job) => {
         return (
           <div className="card2" key={jobsbykey.job_id}>
-            <PersonalizedJobListingscards job={job} />
+            <PersonalizedJobListingscards job={job} key={jobsbykey.job_id} />
           </div>
         );
       })}
