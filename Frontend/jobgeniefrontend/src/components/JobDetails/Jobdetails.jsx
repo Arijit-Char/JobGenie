@@ -8,7 +8,7 @@ const Jobdetails = () => {
   const dispatch = useDispatch();
   const jobdetails = useSelector((state) => state.jobdetails.jobdetails);
   let analysis = useSelector((state) => state.resumeanalysis.analysis);
-  // let intques = useSelector((state) => state.interviewques.intques);
+  let intques = useSelector((state) => state.interviewques.intques);
   const [activeScreen, setActiveScreen] = useState("job");
   const [jobq, setJobq] = useState("");
   const [jobd, setJobd] = useState("");
@@ -38,19 +38,15 @@ const Jobdetails = () => {
       dispatch(ResumeAnalysis(jobd, jobq));
     }
   }, [jobd, jobq, dispatch]);
-  // useEffect(() => {
-  //   if (jobd && jobq) {
-  //     dispatch(InterviewQues(jobd, jobq));
-  //   }
-  // }, [jobd, jobq, dispatch]);
+  useEffect(() => {
+    if (jobd && jobq) {
+      dispatch(InterviewQues(jobd, jobq));
+    }
+  }, [jobd, jobq, dispatch]);
 
   const handleButtonClick = (screen) => {
     setActiveScreen(screen);
   };
-
-  // if (!jobdetails || !analysis || !analysis.data || !intques || !intques.data) {
-  //   return <div style={{ zIndex: "2" }}>Loading...</div>;
-  // }
 
   if (
     !jobdetails ||
@@ -59,15 +55,24 @@ const Jobdetails = () => {
     !jobq ||
     !jobd ||
     jobq.length < 1 ||
-    jobd.length < 1
+    jobd.length < 1 ||
+    !intques ||
+    !intques.data
   ) {
-    return <div style={{ zIndex: "2", color:"white", width:"10rem" }}>Loading...</div>;
+    console.log("Loading......");
+    return (
+      <div style={{ zIndex: "2", color: "white", width: "10rem" }}>
+        Loading...
+      </div>
+    );
   }
   console.log(analysis.data);
+  console.log(intques.data);
   analysis = JSON.parse(analysis.data);
-  // intques = JSON.parse(removeJsonDelimiters(intques.data));
+  intques = JSON.parse(intques.data);
 
   console.log(analysis);
+  console.log(intques);
   return (
     <div className="component-container">
       <div className="button-container">
@@ -168,7 +173,7 @@ const Jobdetails = () => {
           </motion.div>
         )}
 
-        {activeScreen === "analysis" && (
+        {activeScreen === "analysis" && analysis && analysis.length > 0 && (
           <motion.div
             key="analysis"
             initial={{ opacity: 0, y: 50 }}
@@ -201,8 +206,8 @@ const Jobdetails = () => {
           </motion.div>
         )}
 
-        {/* {activeScreen === "interview" && (
-            <motion.div
+        {activeScreen === "interview" && intques && intques.length > 0 && (
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
@@ -222,7 +227,7 @@ const Jobdetails = () => {
               </motion.div>
             ))}
           </motion.div>
-          )} */}
+        )}
       </AnimatePresence>
     </div>
   );
