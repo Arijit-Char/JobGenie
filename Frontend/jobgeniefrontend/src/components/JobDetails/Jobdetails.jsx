@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./Jobdetails.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { ResumeAnalysis, InterviewQues } from "../../actions/user";
-
+import LoadingScreen from "../Loading Screen/Loading";
 const Jobdetails = () => {
   const dispatch = useDispatch();
   const jobdetails = useSelector((state) => state.jobdetails.jobdetails);
@@ -12,11 +12,7 @@ const Jobdetails = () => {
     (state) => state.interviewques.intques
   );
   if (!jobdetails) {
-    return (
-      <div style={{ zIndex: "2", color: "white", width: "10rem" }}>
-        Loading...
-      </div>
-    );
+    return <LoadingScreen />;
   }
   const [activeScreen, setActiveScreen] = useState("job");
 
@@ -40,11 +36,7 @@ const Jobdetails = () => {
   }, [jobdetails]);
 
   if (!jobq || !jobd) {
-    return (
-      <div style={{ zIndex: "2", color: "white", width: "10rem" }}>
-        Loading...
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   useEffect(() => {
@@ -88,11 +80,7 @@ const Jobdetails = () => {
     !intques.length > 0 ||
     !analysis.length > 0
   ) {
-    return (
-      <div style={{ zIndex: "2", color: "white", width: "10rem" }}>
-        Loading...
-      </div>
-    );
+    return <LoadingScreen />;
   }
   console.log(analysis);
   console.log(intques);
