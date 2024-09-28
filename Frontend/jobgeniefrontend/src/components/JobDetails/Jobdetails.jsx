@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ResumeAnalysis, InterviewQues } from "../../actions/user";
 import LoadingScreen from "../Loading Screen/Loading";
 const Jobdetails = () => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const jobdetails = useSelector((state) => state.jobdetails.jobdetails);
   const analysisData = useSelector((state) => state.resumeanalysis.analysis);
@@ -18,6 +19,7 @@ const Jobdetails = () => {
 
   const jobq = useMemo(() => {
     if (jobdetails) {
+      setLoading(true);
       return jobdetails.job_highlights?.Qualifications?.join(" ").trim() || "";
     }
     return "";
@@ -41,6 +43,7 @@ const Jobdetails = () => {
 
   useEffect(() => {
     if (jobd && jobq) {
+      setLoading(true);
       dispatch(ResumeAnalysis(jobd, jobq));
       dispatch(InterviewQues(jobd, jobq));
     }
@@ -51,8 +54,10 @@ const Jobdetails = () => {
 
     try {
       const parsedData = JSON.parse(analysisData.data);
+      setLoading(false);
       return Array.isArray(parsedData) ? parsedData : [];
     } catch (error) {
+      setLoading(true);
       console.error("Error parsing analysis data:", error);
       return [];
     }
@@ -63,8 +68,10 @@ const Jobdetails = () => {
 
     try {
       const parsedData = JSON.parse(interviewQuestionsData.data);
+      setLoading(false);
       return Array.isArray(parsedData) ? parsedData : [];
     } catch (error) {
+      setLoading(true);
       console.error("Error parsing interview questions data:", error);
       return [];
     }
@@ -82,8 +89,8 @@ const Jobdetails = () => {
   ) {
     return <LoadingScreen />;
   }
-  console.log(analysis);
-  console.log(intques);
+  if(loading) return <LoadingScreen />;
+
   return (
     <div className="component-container">
       <div className="button-container">
