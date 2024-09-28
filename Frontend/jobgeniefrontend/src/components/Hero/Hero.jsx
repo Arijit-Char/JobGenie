@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import "./Hero.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { resumeUpload } from "../../actions/user";
+import LoadingScreen from "../Loading Screen/Loading"; // Import the LoadingScreen component
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -24,6 +25,7 @@ export default function Hero() {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [btnref, setBtnref] = useState(false);
+  const [loading, setLoading] = useState(false); // State to manage loading screen
 
   const dispatch = useDispatch();
 
@@ -37,22 +39,31 @@ export default function Hero() {
       toast.error("Please select a file");
       return;
     }
+    setLoading(true); // Show the loading screen when upload starts
     dispatch(resumeUpload(selectedFile));
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (message) {
+      setLoading(false); // Hide the loading screen when upload is successful
       toast.success("Resume Uploaded Successfully", {
         position: "bottom-center",
       });
     } else if (error) {
+      setLoading(false); // Hide the loading screen when an error occurs
       toast.error(error, {
         position: "bottom-center",
       });
-      console.error("Error logging in:", error);
+      console.error("Error uploading resume:", error);
     }
   }, [error, message, dispatch]);
+
   const token = localStorage.getItem("token");
+
+  if (loading) {
+    // Display the loading screen while waiting for upload completion
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="hero">
