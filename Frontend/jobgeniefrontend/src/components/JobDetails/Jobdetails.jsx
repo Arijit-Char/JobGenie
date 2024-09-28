@@ -11,7 +11,13 @@ const Jobdetails = () => {
   const interviewQuestionsData = useSelector(
     (state) => state.interviewques.intques
   );
-
+  if (!jobdetails) {
+    return (
+      <div style={{ zIndex: "2", color: "white", width: "10rem" }}>
+        Loading...
+      </div>
+    );
+  }
   const [activeScreen, setActiveScreen] = useState("job");
 
   const jobq = useMemo(() => {
@@ -32,6 +38,14 @@ const Jobdetails = () => {
     }
     return "";
   }, [jobdetails]);
+
+  if (!jobq || !jobd) {
+    return (
+      <div style={{ zIndex: "2", color: "white", width: "10rem" }}>
+        Loading...
+      </div>
+    );
+  }
 
   useEffect(() => {
     if (jobd && jobq) {
@@ -67,11 +81,12 @@ const Jobdetails = () => {
   const handleButtonClick = (screen) => setActiveScreen(screen);
 
   if (
-    !jobdetails ||
-    !analysisData ||
-    !interviewQuestionsData ||
-    jobq.length < 1 ||
-    jobd.length < 1
+    !intques ||
+    !analysis ||
+    !Array.isArray(intques) ||
+    !Array.isArray(analysis) ||
+    !intques.length > 0 ||
+    !analysis.length > 0
   ) {
     return (
       <div style={{ zIndex: "2", color: "white", width: "10rem" }}>
