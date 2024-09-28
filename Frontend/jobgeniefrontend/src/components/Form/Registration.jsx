@@ -9,6 +9,10 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -59,6 +63,7 @@ export default function Registration() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { message, error } = useSelector((state) => state.register);
+  const [showPassword, setShowPassword] = React.useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -67,7 +72,6 @@ export default function Registration() {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    // Simple validation check for empty fields
     if (!name || !email || !password) {
       toast.error("Please fill out all fields.", {
         position: "bottom-center",
@@ -96,6 +100,14 @@ export default function Registration() {
       console.error("Error registering:", error);
     }
   }, [error, message, dispatch]);
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -151,6 +163,7 @@ export default function Registration() {
               InputLabelProps={{ style: { color: "#C5C6C7" } }}
               InputProps={{
                 style: { color: "#C5C6C7" },
+                shrink: true,
               }}
             />
             <TextField
@@ -159,12 +172,25 @@ export default function Registration() {
               fullWidth
               name="password"
               label="Password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               autoComplete="current-password"
               InputLabelProps={{ style: { color: "#C5C6C7" } }}
               InputProps={{
                 style: { color: "#C5C6C7" },
+                shrink: true,
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                      sx={{ color: "#45A29E" }}
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
               }}
             />
             <Button

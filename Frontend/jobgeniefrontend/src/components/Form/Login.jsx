@@ -14,6 +14,10 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/user";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const defaultTheme = createTheme({
   palette: {
@@ -59,6 +63,14 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { message, error } = useSelector((state) => state.login);
+
+  // State to manage password visibility
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((prev) => !prev);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -136,6 +148,7 @@ export default function Login() {
               InputLabelProps={{ style: { color: "#C5C6C7" } }}
               InputProps={{
                 style: { color: "#C5C6C7" },
+                shrink: true,
               }}
             />
             <TextField
@@ -144,12 +157,25 @@ export default function Login() {
               fullWidth
               name="password"
               label="Password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               autoComplete="current-password"
               InputLabelProps={{ style: { color: "#C5C6C7" } }}
               InputProps={{
                 style: { color: "#C5C6C7" },
+                shrink: true,
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                      sx={{ color: "#45A29E" }}
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
               }}
             />
             <Button

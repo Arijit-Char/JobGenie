@@ -44,9 +44,9 @@ export default function Header() {
   };
 
   const handleLogout = async () => {
-   await dispatch(logout());
-   navigate("/");
-   window.location.reload();
+    await dispatch(logout());
+    navigate("/");
+    window.location.reload();
   };
   React.useEffect(() => {
     if (message) {
@@ -115,8 +115,8 @@ export default function Header() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }} >
-      <AppBar position="static" style={{marginTop:"1rem"}}>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" style={{ marginTop: "1rem" }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -135,28 +135,28 @@ export default function Header() {
           >
             JobGenie
           </Typography>
-
+          <IconButton
+            className="signup-button"
+            size="small"
+            color="inherit"
+            variant="contained"
+            onClick={() => navigate("/")}
+            style={{ marginLeft: "5rem", fontSize: "1rem" }}
+            disabled={!localStorage.getItem("token")}
+          >
+            Home
+          </IconButton>
           <IconButton
             className="signup-button"
             size="small"
             color="inherit"
             variant="contained"
             onClick={() => navigate("/pjobs")}
-            style={{ marginLeft: "5rem", fontSize: "0.77rem",  }}
+            style={{ fontSize: "1rem" }}
             disabled={!localStorage.getItem("token")}
           >
-            Personalized Jobs
+            Jobs
           </IconButton>
-          {/* <IconButton
-            className="signup-button"
-            size="small"
-            color="inherit"
-            variant="contained"
-            onClick={handleLogout}
-            style={{ fontSize: "0.77rem" }}
-          >
-            All Jobs
-          </IconButton> */}
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -168,6 +168,7 @@ export default function Header() {
                   color="inherit"
                   variant="contained"
                   onClick={handleLogout}
+                  style={{ fontSize: "1rem" }}
                 >
                   Logout
                 </IconButton>
