@@ -24,9 +24,9 @@ export const getresumeanalysis = async (req, res, next) => {
     const prompt = `This is my resume data in text format, Resume Data: ${responseData}. They are job descriptions and qualifications for a job role I am going to apply, 
     Job Description: ${description}, Job Qualification: ${qualification}. Analyze the following data and provide a array of array strings in JavaScript response with three
     fields:
-    - Probability: A number out of 100 indicating the probability of my resume getting selected for the job.
-    - Problems: An array of strings listing issues with my resume.
-    - Suggestions: An array of strings with recommendations to improve my resume for this job role.
+    Probability: A number out of 100 indicating the probability of my resume getting selected for the job.
+    Problems: An array of strings listing issues with my resume.
+    Suggestions: An array of strings with recommendations to improve my resume for this job role.
     The format should be like [[Probability], [Problems], [Suggestions]] . Probability should be a number in string format and Problems and Suggestions should be multiple strings
      in an array with comma seperated if multiple problems and suggations exists. Don't give any unnecessry details just give the array of array of strings in the format I have mentioned.`;
 
