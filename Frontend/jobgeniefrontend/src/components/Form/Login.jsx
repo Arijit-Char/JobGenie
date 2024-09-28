@@ -63,11 +63,17 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const data = {
-      email: formData.get("email"),
-      password: formData.get("password"),
-    };
-    dispatch(login(data.email, data.password));
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    // Form validation: check if email and password are filled
+    if (!email || !password) {
+      toast.error("Please enter valid credentials.", { position: "bottom-center" });
+      return;
+    }
+
+    // Dispatch login action if form is valid
+    dispatch(login(email, password));
   };
 
   React.useEffect(() => {
@@ -87,7 +93,7 @@ export default function Login() {
       });
       console.error("Error logging in:", error);
     }
-  }, [error, message, dispatch]);
+  }, [error, message, dispatch, navigate]);
 
   return (
     <ThemeProvider theme={defaultTheme}>

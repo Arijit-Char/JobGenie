@@ -63,12 +63,19 @@ export default function Registration() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      password: formData.get("password"),
-    };
-    dispatch(register(data.name, data.email, data.password));
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    // Simple validation check for empty fields
+    if (!name || !email || !password) {
+      toast.error("Please fill out all fields.", {
+        position: "bottom-center",
+      });
+      return;
+    }
+
+    dispatch(register(name, email, password));
   };
 
   React.useEffect(() => {
@@ -86,7 +93,7 @@ export default function Registration() {
       toast.error(error, {
         position: "bottom-center",
       });
-      console.error("Error logging in:", error);
+      console.error("Error registering:", error);
     }
   }, [error, message, dispatch]);
 
@@ -164,7 +171,12 @@ export default function Registration() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, backgroundColor: "#45A29E", color: "#0B0C10" }}
+              sx={{
+                mt: 3,
+                mb: 2,
+                backgroundColor: "#45A29E",
+                color: "#0B0C10",
+              }}
             >
               Sign Up
             </Button>
