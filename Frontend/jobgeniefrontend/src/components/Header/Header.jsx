@@ -47,7 +47,7 @@ export default function Header() {
 
   const handleOptionClick = (route) => {
     navigate(route);
-    closeMobileMenu(); // Close the menu after navigation
+    closeMobileMenu(); 
   };
 
   return (
@@ -59,12 +59,10 @@ export default function Header() {
             noWrap
             component="div"
             sx={{ display: { sm: "block" }, color: "#FFFFFF" }}
-            // style={{ fontSize: "1rem" }}
           >
             JobGenie
           </Typography>
 
-          {/* Home and Jobs buttons always visible */}
           <IconButton
             className="signup-button"
             size="small"
