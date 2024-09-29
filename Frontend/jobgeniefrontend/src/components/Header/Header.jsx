@@ -58,7 +58,8 @@ export default function Header() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { sm: "block" }, color: "#FFFFFF" }}
+            // style={{ fontSize: "1rem" }}
           >
             JobGenie
           </Typography>
@@ -70,7 +71,7 @@ export default function Header() {
             color="inherit"
             variant="contained"
             onClick={() => navigate("/")}
-            style={{ marginLeft: "5rem", fontSize: "1rem" }}
+            style={{ marginLeft: "2rem", fontSize: "1rem" }}
             disabled={!localStorage.getItem("token")}
           >
             Home
@@ -140,7 +141,6 @@ export default function Header() {
         </Toolbar>
       </AppBar>
 
-      {/* Framer Motion Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
