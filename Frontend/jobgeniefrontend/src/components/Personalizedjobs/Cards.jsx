@@ -19,7 +19,7 @@ export default function Cards({ job }) {
       <div className="card-content">
         <h2 className="card-title">{job}</h2>
         <p className="card-body">Apply for {job} job now</p>
-        <a href="#" className="button">
+        <a  className="button">
           Apply
         </a>
       </div>

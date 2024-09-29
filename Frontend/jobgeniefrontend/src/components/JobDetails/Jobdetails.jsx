@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Jobdetails.scss";
+import Logo from "../../Data/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { ResumeAnalysis, InterviewQues } from "../../actions/user";
 import LoadingScreen from "../Loading Screen/Loading";
@@ -16,7 +17,7 @@ const Jobdetails = () => {
     return <LoadingScreen />;
   }
   const [activeScreen, setActiveScreen] = useState("job");
-
+  const [error, setError] = useState(false);
   const jobq = useMemo(() => {
     if (jobdetails) {
       setLoading(true);
@@ -47,7 +48,7 @@ const Jobdetails = () => {
       dispatch(ResumeAnalysis(jobd, jobq));
       dispatch(InterviewQues(jobd, jobq));
     }
-  }, [jobd, jobq, dispatch]);
+  }, [jobd, jobq, dispatch, error]);
 
   const analysis = useMemo(() => {
     if (!analysisData?.data) return [];
@@ -89,7 +90,11 @@ const Jobdetails = () => {
   ) {
     return <LoadingScreen />;
   }
-  if(loading) return <LoadingScreen />;
+  if(!Array.isArray(intques) || !Array.isArray(analysis) || !intques.length > 0 || !analysis.length > 0) {
+    console.log("Error parsing data");
+    setError(!error);
+  }
+  if (loading) return <LoadingScreen />;
 
   return (
     <div className="component-container">
@@ -113,7 +118,7 @@ const Jobdetails = () => {
             <div className="job-container">
               <div className="employer-details">
                 <img
-                  src={jobdetails.employer_logo}
+                  src={jobdetails.employer_logo===null ? Logo : jobdetails.employer_logo}
                   alt="Employer Logo"
                   className="employer-logo"
                 />
