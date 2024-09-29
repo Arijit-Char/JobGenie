@@ -5,12 +5,16 @@
   padding: 20px;
   z-index: 2;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .page-heading {
-  font-size:3rem;
+  font-size: 3rem;
   margin: 30px;
-  color: #66FCF1;
+  color: #66fcf1;
   font-weight: 800;
 }
 
@@ -64,7 +68,6 @@
   box-sizing: border-box;
 }
 
-
 .card {
   color: var(--clr-neutral-100);
   background-size: cover;
@@ -72,8 +75,7 @@
   border-radius: 0.5rem;
   overflow: hidden;
   transition: transform 500ms ease;
-  background-color: #1F2833;
-  
+  background-color: #1f2833;
 }
 
 .card:hover,
@@ -95,7 +97,7 @@
   position: relative;
   width: max-content;
   font-weight: 800;
-  color: #66F6F1 !important;
+  color: #66f6f1 !important;
 }
 
 .card:hover .card-title::after,
@@ -110,7 +112,7 @@
   width: calc(100% + var(--padding));
   left: calc(var(--padding) * -1);
   bottom: -2px;
-  background: #66F6F1;
+  background: #66f6f1;
   transform-origin: left;
   transition: transform 500ms ease;
 }
@@ -152,7 +154,7 @@
   display: inline-block;
   text-decoration: none;
   color: var(--clr-neutral-900);
-  background-color: #66F6F1;
+  background-color: #66f6f1;
   padding: 0.5em 1.25em;
   border-radius: 0.25rem;
 }
@@ -163,7 +165,7 @@
 }
 
 .card-body {
-  color: #C5C6C7;
+  color: #c5c6c7;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -175,5 +177,18 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
     transition-delay: 0ms !important;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .page-heading {
+    font-size: 2.1rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .page-heading {
+    font-size: 0.95rem;
+  }
+  .card h2 {
+    font-size: 17px;
   }
 }
