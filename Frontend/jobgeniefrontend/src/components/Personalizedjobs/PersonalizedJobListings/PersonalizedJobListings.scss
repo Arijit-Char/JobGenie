@@ -4,17 +4,6 @@ $primary-color: #66fcf1;
 $text-light: #c5c6c7;
 $accent-color: #45a29e;
 
-// .perjobliscard {
-//   display: flex;
-//   z-index: 1;
-//   align-items: center;
-//   justify-content: space-between;
-//   flex-wrap: wrap;
-//   gap: 5rem;
-//   padding: 8rem;
-
-// }
-
 .employer-logo {
   height: 13rem;
   width: 90%;
@@ -34,7 +23,7 @@ $accent-color: #45a29e;
   align-items: center;
   margin: 20px;
   cursor: pointer;
-  width: 30vw; // Consistent width for all cards
+  // width: 40vw;
 
   .employer-logo {
     border-radius: 1rem;
@@ -77,8 +66,8 @@ $accent-color: #45a29e;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-
-  padding: 2rem;
+  padding-top: 3rem;
+  gap: 4.5rem;
 }
 .remotebtn {
   > button {
@@ -88,5 +77,36 @@ $accent-color: #45a29e;
     padding: 0.5rem;
 
     border-radius: 5px;
+  }
+}
+.card-container2 .job-card {
+  width: 30dvw;
+  height: 40dvh;
+}
+@media screen and (max-width: 1280px){
+  .card-container2 {
+    margin: 0px;
+  }
+
+  .card-container2 .job-card {
+    width: 39dvw;
+    height: 26dvh;
+  }
+}
+@media screen and (max-width: 767px) {
+  .card-container2 .job-card {
+    width: 67dvw;
+    height: 34dvh;
+  }
+  .css-h93ljk-MuiTypography-root {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+  }
+  .css-r40f8v-MuiTypography-root {
+    font-size: 0.6rem !important;
+  }
+  .card-container2 .employer-logo {
+    height: 40px;
+    width: 60px;
   }
 }
