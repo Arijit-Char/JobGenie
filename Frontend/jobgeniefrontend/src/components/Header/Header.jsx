@@ -4,43 +4,19 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import "./Header.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/user";
+import { motion, AnimatePresence } from "framer-motion";
+import "./Header.scss";
 
 export default function Header() {
   const dispatch = useDispatch();
   const { message, error } = useSelector((state) => state.logout);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const navigate = useNavigate();
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
 
   const handleLogout = async () => {
     await dispatch(logout());
@@ -61,20 +37,23 @@ export default function Header() {
     }
   }, [error, message, dispatch]);
 
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = <button>It's btn</button>;
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
+  const handleOptionClick = (route) => {
+    navigate(route);
+    closeMobileMenu(); // Close the menu after navigation
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ marginTop: "1rem" }}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          ></IconButton>
           <Typography
             variant="h6"
             noWrap
@@ -83,6 +62,8 @@ export default function Header() {
           >
             JobGenie
           </Typography>
+
+          {/* Home and Jobs buttons always visible */}
           <IconButton
             className="signup-button"
             size="small"
@@ -107,20 +88,20 @@ export default function Header() {
           </IconButton>
 
           <Box sx={{ flexGrow: 1 }} />
+
+          {/* Desktop view buttons */}
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {localStorage.getItem("token") ? (
-              <>
-                <IconButton
-                  className="signup-button"
-                  size="small"
-                  color="inherit"
-                  variant="contained"
-                  onClick={handleLogout}
-                  style={{ fontSize: "1rem" }}
-                >
-                  Logout
-                </IconButton>
-              </>
+              <IconButton
+                className="signup-button"
+                size="small"
+                color="inherit"
+                variant="contained"
+                onClick={handleLogout}
+                style={{ fontSize: "1rem" }}
+              >
+                Logout
+              </IconButton>
             ) : (
               <>
                 <IconButton
@@ -134,22 +115,23 @@ export default function Header() {
                 </IconButton>
                 <IconButton
                   className="signup-button"
-                  onClick={() => navigate("/registration")}
                   size="small"
                   color="inherit"
+                  onClick={() => navigate("/registration")}
                 >
                   Signup
                 </IconButton>
               </>
             )}
           </Box>
+
+          {/* Mobile view button */}
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="show more"
-              aria-controls={mobileMenuId}
               aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
+              onClick={toggleMobileMenu}
               color="inherit"
             >
               <MoreIcon />
@@ -157,7 +139,32 @@ export default function Header() {
           </Box>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
+
+      {/* Framer Motion Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            className="mobile-menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {localStorage.getItem("token") ? (
+              <button onClick={handleLogout}>Logout</button>
+            ) : (
+              <>
+                <button onClick={() => handleOptionClick("/login")}>
+                  Login
+                </button>
+                <button onClick={() => handleOptionClick("/registration")}>
+                  Signup
+                </button>
+              </>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Box>
   );
 }

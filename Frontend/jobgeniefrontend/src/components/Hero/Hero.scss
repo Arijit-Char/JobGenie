@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 88dvh;
+  height: 84dvh;
   background-color: #f8f8f8;
   gap: 5rem;
   z-index: 1;
@@ -30,7 +30,7 @@
   }
 
   .bodytext {
-    margin-left: 20px;
+
     color: #ffffff;
     z-index: 2;
     position: relative;
@@ -74,20 +74,21 @@
     font-size: 10px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .hero {
     .bodytext {
       h1 {
-        font-size: 1.8rem;
+        font-size: 2.3rem;
       }
       h2 {
-        font-size: 0.25rem;
+        font-size: 0.38rem;
         font-weight: 800;
       }
     }
   }
   .grpbtn {
-    gap: 1rem;
+    gap: 1.5rem;
     label {
       font-size: 0.55rem;
 
