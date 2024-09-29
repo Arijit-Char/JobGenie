@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import "./Hero.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { resumeUpload } from "../../actions/user";
-import LoadingScreen from "../Loading Screen/Loading"; // Import the LoadingScreen component
+import LoadingScreen from "../Loading Screen/Loading"; 
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -25,7 +25,7 @@ export default function Hero() {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [btnref, setBtnref] = useState(false);
-  const [loading, setLoading] = useState(false); // State to manage loading screen
+  const [loading, setLoading] = useState(false); 
 
   const dispatch = useDispatch();
 
@@ -39,7 +39,7 @@ export default function Hero() {
       toast.error("Please select a file");
       return;
     }
-    setLoading(true); // Show the loading screen when upload starts
+    setLoading(true); 
     dispatch(resumeUpload(selectedFile));
   };
 
@@ -50,7 +50,7 @@ export default function Hero() {
         position: "bottom-center",
       });
     } else if (error) {
-      setLoading(false); // Hide the loading screen when an error occurs
+      setLoading(false);
       toast.error(error, {
         position: "bottom-center",
       });
@@ -61,7 +61,6 @@ export default function Hero() {
   const token = localStorage.getItem("token");
 
   if (loading) {
-    // Display the loading screen while waiting for upload completion
     return <LoadingScreen />;
   }
 
