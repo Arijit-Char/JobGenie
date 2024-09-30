@@ -7,7 +7,7 @@ export const register = (name, email, password) => async (dispatch) => {
     });
 
     const { data } = await axios.post(
-      "http://localhost:5001/api/users/register",
+      "https://jobgenie-b2fw.onrender.com/api/users/register",
       {
         name,
         email,
@@ -40,7 +40,7 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     const { data } = await axios.post(
-      "http://localhost:5001/api/users/login",
+      "https://jobgenie-b2fw.onrender.com/api/users/login",
       {
         email,
         password,
@@ -71,7 +71,7 @@ export const logout = () => async (dispatch) => {
       type: "Get_Logout_Request",
     });
 
-    const { data } = await axios.get("http://localhost:5001/api/users/logout");
+    const { data } = await axios.get("https://jobgenie-b2fw.onrender.com/api/users/logout");
 
     dispatch({
       type: "Get_Logout_Success",
@@ -92,7 +92,7 @@ export const getData = () => async (dispatch) => {
     });
 
     const { data: userdata } = await axios.get(
-      "http://localhost:5001/api/users/userdetails",
+      "https://jobgenie-b2fw.onrender.com/api/users/userdetails",
       {
         withCredentials: true,
       }
@@ -119,7 +119,7 @@ export const resumeUpload = (file) => async (dispatch) => {
     formData.append("file", file);
 
     const { data: resumeData } = await axios.post(
-      "http://localhost:5001/api/resumedata",
+      "https://jobgenie-b2fw.onrender.com/api/resumedata",
       formData,
       {
         headers: {
@@ -135,7 +135,7 @@ export const resumeUpload = (file) => async (dispatch) => {
     });
 
     const { data: geminiKeyInfo } = await axios.get(
-      "http://localhost:5001/api/geminikeyinfo",
+      "https://jobgenie-b2fw.onrender.com/api/geminikeyinfo",
       {
         withCredentials: true,
       }
@@ -180,7 +180,7 @@ export const GetJobListingByKeyword = (job) => async (dispatch) => {
     });
 
     const { data: getdata } = await axios.post(
-      "http://localhost:5001/api/getjobsbykey",
+      "https://jobgenie-b2fw.onrender.com/api/getjobsbykey",
       {
         job: job,
       },
@@ -227,7 +227,7 @@ export const ResumeAnalysis =
       });
 
       const { data: getanalysis } = await axios.post(
-        "http://localhost:5001/api/resumeanalysis",
+        "https://jobgenie-b2fw.onrender.com/api/resumeanalysis",
         {
           description: description,
           qualification: qualification,
@@ -256,7 +256,7 @@ export const InterviewQues =
       });
 
       const { data: intvques } = await axios.post(
-        "http://localhost:5001/api/interviewques",
+        "https://jobgenie-b2fw.onrender.com/api/interviewques",
         {
           description: description,
           qualification: qualification,
