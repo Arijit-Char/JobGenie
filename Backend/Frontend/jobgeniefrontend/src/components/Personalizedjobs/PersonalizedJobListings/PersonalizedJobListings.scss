@@ -83,16 +83,7 @@ $accent-color: #45a29e;
   width: 30dvw;
   height: 40dvh;
 }
-@media screen and (max-width: 1280px) {
-  .card-container2 {
-    margin: 0px;
-  }
 
-  .card-container2 .job-card {
-    width: 39dvw;
-    height: 26dvh;
-  }
-}
 @media screen and (max-width: 767px) {
   .card-container2 .job-card {
     width: 67dvw;
