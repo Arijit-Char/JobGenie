@@ -1,7 +1,7 @@
 # JobGenie: Revolutionizing Job Search
 
-## Overview Video
-[Live Url](https://jobgenie-b2fw.onrender.com)
+## Live URL
+[JobGenie Live](https://jobgenie-b2fw.onrender.com)
 
 ## Overview Video
 [Link to Overview Video](https://youtu.be/skMlUqS_SMc)
