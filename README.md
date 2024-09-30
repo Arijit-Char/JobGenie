@@ -4,7 +4,7 @@
 [JobGenie Live](https://jobgenie-b2fw.onrender.com)
 
 ## Overview Video
-[Link to Overview Video](https://youtu.be/skMlUqS_SMc)
+[Link to Overview Video](https://youtu.be/N-dUeuHdnSI)
 
 ## Presentation Link
 [Link to Presentation ](https://www.slideshare.net/slideshow/jobgenie-revolutionizing-job-search-with-technology/267185199)
