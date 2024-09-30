@@ -1,0 +1,217 @@
+// Variables
+$primary-bg: #0B0C10;
+$secondary-bg: #1F2833;
+$primary-color: #66FCF1;
+$text-light: #C5C6C7;
+$accent-color: #45A29E;
+$font-family: 'Arial, sans-serif';
+$transition-time: 0.3s;
+
+// Main container
+.component-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: $primary-bg;
+  color: $text-light;
+  font-family: $font-family;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  position: relative;
+}
+
+// Button container
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  z-index: 1;
+
+  button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: $primary-color;
+    color: $secondary-bg;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
+}
+
+// Screen container
+.screen {
+  padding: 20px;
+  border: 1px solid $text-light;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: $secondary-bg;
+}
+
+// Job details container
+.job-container {
+  .employer-details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .employer-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .job-title {
+      font-size: 24px;
+      margin: 0;
+      color: $primary-color;
+    }
+
+    .employer-name {
+      font-size: 18px;
+      margin: 0;
+    }
+  }
+
+  .details-container {
+    margin-bottom: 20px;
+
+    .details-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      .details-column {
+        flex: 1;
+
+        .detail-label {
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: $primary-color;
+        }
+
+        .detail-value {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .responsibilities-title,
+  .requirements-title {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .responsibilities-list,
+  .requirements-list {
+    margin-bottom: 20px;
+
+    li {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+  }
+
+  .apply-now-container {
+    text-align: center;
+    margin-top: 20px;
+
+    .apply-now-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: $primary-color;
+      color: $secondary-bg;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: $accent-color;
+      }
+    }
+  }
+}
+
+// Analysis container
+.analysis-container {
+  .analysis-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .analysis-probability {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: $primary-color;
+  }
+
+  .analysis-section {
+    margin-bottom: 20px;
+
+    .analysis-section-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: $primary-color;
+    }
+
+    .analysis-list {
+      list-style-type: disc;
+      margin-left: 20px;
+      color: $text-light;
+    }
+  }
+}
+
+// Interview Questions container
+.interview-questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  background-color: $secondary-bg;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: $font-family;
+
+  .question {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  .answer {
+    font-size: 1em;
+    color: $text-light;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .card {
+    width: 40vw;
+    padding: 25px;
+    margin-bottom: 40px;
+    background-color: $primary-bg;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow $transition-time;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+@media screen and (max-width: 767px){
+  .interview-questions .card{
+    width: 80dvw;
+  }
+}

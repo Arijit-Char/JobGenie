@@ -1,0 +1,117 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 84dvh;
+  background-color: #f8f8f8;
+  gap: 5rem;
+  z-index: 1;
+  .resume {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .MuiButton-root {
+      height: 4rem;
+      width: 10rem;
+      background-color: #1f2833;
+      color: #66fcf1;
+      border: 1px solid #66fcf1;
+
+      &:hover {
+        background-color: #1f2833;
+      }
+
+      .MuiButton-startIcon {
+        color: #fff;
+      }
+    }
+  }
+
+  .bodytext {
+
+    color: #ffffff;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-size: 5rem;
+      font-weight: 800;
+      color: #66fcf1;
+      margin-bottom: 10px;
+      text-shadow: -1px -1px 0 #c5c6c7, 1px -1px 0 #c5c6c7, -1px 1px 0 #c5c6c7,
+        1px 1px 0 #c5c6c7;
+    }
+
+    h2 {
+      font-size: 21px;
+      letter-spacing: 2px;
+      font-weight: normal;
+      color: #666;
+    }
+  }
+}
+.grpbtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  .choosebtn {
+    border-radius: 100%;
+    height: 11rem !important;
+    width: 11rem !important;
+  }
+  .uploadbtn {
+    height: 2rem !important;
+    width: 2rem !important;
+    background-color: #1f2833 !important;
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hero {
+    .bodytext {
+      h1 {
+        font-size: 2.3rem;
+      }
+      h2 {
+        font-size: 0.38rem;
+        font-weight: 800;
+      }
+    }
+  }
+  .grpbtn {
+    gap: 1.5rem;
+    label {
+      font-size: 0.55rem;
+
+      span {
+        svg {
+          width: 0.65rem;
+        }
+      }
+    }
+    button {
+      span {
+        width: 1rem;
+      }
+    }
+    .choosebtn {
+      border-radius: 100%;
+      height: 7rem !important;
+      width: 7rem !important;
+    }
+    .uploadbtn {
+      height: 1.5rem !important;
+      background-color: #1f2833 !important;
+      font-size: 0.5rem;
+    }
+  }
+}

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "npm install --prefix ./Frontend/jobgeniefrontend && npm run build --prefix ./Frontend/jobgeniefrontend && npm install"
   },
   "repository": {
     "type": "git",

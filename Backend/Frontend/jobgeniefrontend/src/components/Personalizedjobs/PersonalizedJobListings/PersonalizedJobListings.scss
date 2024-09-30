@@ -1,0 +1,112 @@
+$primary-bg: #0b0c10;
+$secondary-bg: #1f2833;
+$primary-color: #66fcf1;
+$text-light: #c5c6c7;
+$accent-color: #45a29e;
+
+.employer-logo {
+  height: 13rem;
+  width: 90%;
+  object-fit: cover;
+}
+.card2 {
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  cursor: pointer;
+  // width: 40vw;
+
+  .employer-logo {
+    border-radius: 1rem;
+    border: 2px solid $primary-color;
+    height: 60px; // Consistent height for the logo
+    width: 80px; // Consistent width for the logo
+    object-fit: cover;
+    margin: 10px auto; // Center the logo
+  }
+
+  .job-card {
+    border-radius: 1rem;
+    width: 50vw;
+    height: 34vh;
+    background-color: $secondary-bg;
+    color: $text-light;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    .MuiCardContent-root {
+      display: flex;
+      flex-direction: column;
+      align-items: center; // Center content inside card
+    }
+  }
+
+  .job-title,
+  .job-location,
+  .job-position {
+    color: $primary-color;
+    text-align: center; // Center text inside card
+  }
+}
+
+.perjobliscard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+  gap: 4.5rem;
+}
+.remotebtn {
+  > div {
+    background-color: $primary-bg;
+    color: $text-light;
+    border: 1px solid $primary-color;
+    padding: 0.5rem;
+
+    border-radius: 5px;
+  }
+}
+.card-container2 .job-card {
+  width: 30dvw;
+  height: 40dvh;
+}
+@media screen and (max-width: 1280px) {
+  .card-container2 {
+    margin: 0px;
+  }
+
+  .card-container2 .job-card {
+    width: 39dvw;
+    height: 26dvh;
+  }
+}
+@media screen and (max-width: 767px) {
+  .card-container2 .job-card {
+    width: 67dvw;
+    height: 34dvh;
+  }
+  .css-h93ljk-MuiTypography-root {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+  }
+  .css-r40f8v-MuiTypography-root {
+    font-size: 0.6rem !important;
+  }
+  .card-container2 .employer-logo {
+    height: 40px;
+    width: 60px;
+  }
+}

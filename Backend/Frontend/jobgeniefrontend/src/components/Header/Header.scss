@@ -1,0 +1,49 @@
+
+.signup-button {
+  width: 4.5rem !important;
+  height: 2.5rem !important;
+  margin-right: 2rem !important;
+  background-color: #66fcf1 !important;
+  border-radius: 5px !important;
+  color: #0b0c10 !important;
+  font-weight: 800;
+  border: 1px solid #c5c6c7 !important;
+}
+
+.signup-button:hover {
+  background-color: #5f8dc3 !important;
+}
+
+@media screen and (max-width: 767px) {
+  .signup-button {
+    width: 2.5rem !important;
+    height: 1.5rem !important;
+    margin-right: 1rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 4rem;
+    right: 1rem;
+    background-color: #0b0c10;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    button {
+      display: block;
+      color: white;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin: 1rem 0;
+      font-size: 1.2rem;
+    }
+
+    button:hover {
+      color: #66fcf1;
+    }
+  }
+}
