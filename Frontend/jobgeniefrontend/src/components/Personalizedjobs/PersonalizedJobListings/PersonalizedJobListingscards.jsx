@@ -64,9 +64,9 @@ export default function PersonalizedJobListingscards({ job }) {
 
               <div className="remotebtn">
   {job.job_is_remote ? (
-    <div className="remote-button">Remote</div> // Changed <button> to <div>
+    <div className="remote-button">Remote</div> 
   ) : (
-    <div className="onsite-button">Onsite</div> // Changed <button> to <div>
+    <div className="onsite-button">Onsite</div> 
   )}
 </div>
             </div>

@@ -70,7 +70,6 @@ export default function Header() {
             variant="contained"
             onClick={() => navigate("/")}
             style={{ marginLeft: "2rem", fontSize: "1rem" }}
-            disabled={!localStorage.getItem("token")}
           >
             Home
           </IconButton>
