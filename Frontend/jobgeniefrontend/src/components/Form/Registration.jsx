@@ -71,6 +71,7 @@ export default function Registration() {
     const name = formData.get("name");
     const email = formData.get("email");
     const password = formData.get("password");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!name || !email || !password) {
       toast.error("Please fill out all fields.", {
@@ -78,7 +79,10 @@ export default function Registration() {
       });
       return;
     }
-
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address.", { position: "bottom-center" });
+      return;
+    }
     dispatch(register(name, email, password));
   };
 

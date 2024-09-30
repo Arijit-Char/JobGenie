@@ -77,13 +77,18 @@ export default function Login() {
     const formData = new FormData(event.currentTarget);
     const email = formData.get("email");
     const password = formData.get("password");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
     // Form validation: check if email and password are filled
     if (!email || !password) {
       toast.error("Please enter valid credentials.", { position: "bottom-center" });
       return;
     }
-
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address.", { position: "bottom-center" });
+      return;
+    }
     // Dispatch login action if form is valid
     dispatch(login(email, password));
   };
